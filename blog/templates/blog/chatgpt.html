@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chat con GPT</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <h1>ChatGPT</h1>
+  <textarea id="userInput" placeholder="Escribe tu mensaje aquí..." rows="4" cols="50"></textarea><br>
+  <button onclick="sendMessage()">Enviar Mensaje</button>
+  <p>Respuesta:</p>
+  <p id="gptResponse"></p>
+
+  <script>
+    async function sendMessage() {
+      const inputText = document.getElementById('userInput').value;
+      const responseElement = document.getElementById('gptResponse');
+      try {
+        const response = await axios.get('/chatgpt/?prompt=' + encodeURIComponent(inputText));
+        console.log("Received response:", response.data);  // Para depuración
+        if (response.data.choices && response.data.choices.length > 0 && response.data.choices[0].message) {
+          responseElement.innerText = response.data.choices[0].message.content;
+        } else {
+          responseElement.innerText = 'No hubo respuesta del modelo GPT.';
+        }
+      } catch (error) {
+        console.error('Error calling backend API:', error);
+        responseElement.innerText = 'Error obteniendo respuesta.';
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!-- Tu template HTML en Django, por ejemplo, `books.html` -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Google Books Viewer</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+  <script type="text/javascript">
+    google.books.load();
+  </script>
+</head>
+
+<body>
+  <h2>Vista Libros - API Google Books</h2>
+  <div id="viewerCanvas" style="width: 600px; height: 500px"></div>
+  <script type="text/javascript">
+    function initialize() {
+      var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+      viewer.load('ISBN:0738531367');
+    }
+    google.books.setOnLoadCallback(initialize);
+  </script>
+</body>
+
+</html>

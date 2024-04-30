@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-sm-10">
+    <h3 class="text-white my-5">Contáctanos</h3>
+
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputName">Nombre</label>
+                <input type="text" class="form-control" id="inputName" style="background-color: gray">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" style="background-color: gray">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Dirección</label>
+            <input type="text" class="form-control" id="inputAddress" style="background-color: gray">
+        </div>
+        <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea class="form-control" id="message" rows="3" style="background-color: gray"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+{% endblock content %}
